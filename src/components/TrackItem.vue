@@ -8,10 +8,11 @@ defineProps<{
     img?: string
     id: string
   }
+  param: string
 }>()
 </script>
 <template>
-  <li @click="navigate(item.id, 'track', 'id')">
+  <li @click="navigate(item.id, param, 'id')">
     <!-- @vue-ignore -->
     <ImgFigure :src="item.img" class="img" v-if="item.img" />
     <figcaption>

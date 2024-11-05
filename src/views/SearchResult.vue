@@ -116,13 +116,13 @@ onMounted(async () => {
     <MainSection>
       <template #header>Songs</template>
       <VerticalSwiper>
-        <TrackItem v-for="(track, index) in tracks" :key="index" :item="track" />
+        <TrackItem v-for="(track, index) in tracks" :key="index" :item="track" param="track" />
       </VerticalSwiper>
     </MainSection>
     <MainSection>
       <template #header>Albums</template>
       <VerticalSwiper>
-        <TrackItem v-for="(album, index) in albums" :key="index" :item="album" />
+        <TrackItem v-for="(album, index) in albums" :key="index" :item="album" param="album" />
       </VerticalSwiper>
     </MainSection>
   </div>

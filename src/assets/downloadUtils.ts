@@ -279,11 +279,11 @@ const downloadAlbum = async (
 
   try {
     // Fetch album data
-    console.log('start fetch')
     await getDownloadData({
       pathname: 'downloadAlbum',
       params: [{ name: 'albumId', value: id }]
     })
+    // console.log('start fetch')
     const album = ref(downloaddata.value)
     console.log(album.value)
     if (!album.value) {
@@ -304,7 +304,6 @@ const downloadAlbum = async (
       album.value = downloaddata.value
       const track = album.value.songs[i]
       const { title: trackTitle, downloadLink, id: trackId, artist: trackArtist } = track
-      console.log(trackArtist)
 
       const data = {
         id: trackId,
@@ -315,20 +314,19 @@ const downloadAlbum = async (
         albumartist: artist,
         artist: trackArtist,
         cover: imageData.value,
-        releaseDate: releaseDate.split('-')[0] // Extract year from release date
+        releaseDate: releaseDate.split('-')[0]
       }
 
       updateProgress(`Downloading track ${i + 1} of ${totalTracks}: ${trackTitle}`)
       const musicBlob = await createAudio(data)
       if (!musicBlob) {
-        console.log('restarting')
         await getDownloadData({
           pathname: 'downloadAlbum',
           params: [{ name: 'albumId', value: id }]
         })
         continue
       }
-      zip.file(`${artist} - ${title} - ${i + 1} - ${title}.mp3`, musicBlob)
+      zip.file(`${artist} - ${title} - ${i + 1} - ${trackTitle}.mp3`, musicBlob)
       i++
     }
 

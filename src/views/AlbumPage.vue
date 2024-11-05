@@ -154,7 +154,12 @@ const closeModal = () => {
         <div>
           <h3>Tracklist:</h3>
           <VerticalSwiper>
-            <TrackItem v-for="(track, index) in tracks" :key="index" :item="track" />
+            <TrackItem
+              v-for="(track, index) in tracks"
+              :key="index"
+              :item="track"
+              param="'track'"
+            />
           </VerticalSwiper>
         </div>
       </template>
