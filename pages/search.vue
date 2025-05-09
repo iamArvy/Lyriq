@@ -2,15 +2,17 @@
 import type { SearchResponse } from "~/types";
 const { getSearchResults } = useSpotify();
 const route = useRoute();
-const query = route.query.q as string;
 const results = ref<SearchResponse>({
   tracks: {},
   albums: {},
   artists: {},
 } as SearchResponse);
-onMounted(async () => {
+const fetchSearchData = async () => {
+  const query = route.query.q as string;
   results.value = await getSearchResults(query);
-});
+};
+onMounted(fetchSearchData);
+watch(() => route.query.q, fetchSearchData);
 </script>
 
 <template>

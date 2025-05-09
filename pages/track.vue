@@ -3,21 +3,26 @@ import type { Album, Collection, Track } from "~/types";
 
 const route = useRoute();
 // const id = route.query.id as string;
-
 const { getTrack, getAlbum, getRecommendations } = useSpotify();
 // const { downloadTrack } = useDownloader();
 const track = ref<Track>({} as Track);
 const album = ref<Album>({} as Album);
 const recommendations = ref<Collection<Track>>({} as Collection<Track>);
-onMounted(async () => {
+
+const fetchTrackData = async () => {
   const id = route.query.id as string;
+  if (!id) return;
+
   track.value = await getTrack(id);
+
   if (track.value) {
     if (track.value.album.album_type === "album")
       album.value = await getAlbum(track.value.album.id);
     recommendations.value = await getRecommendations(id);
   }
-});
+};
+onMounted(fetchTrackData);
+watch(() => route.query.id, fetchTrackData);
 </script>
 
 <template>

@@ -9,14 +9,17 @@ const { getArtist, getArtistAlbums, getRelatedArtists } = useSpotify();
 const artist = ref<Artist>({} as Artist);
 const artistAlbums = ref<Collection<Album>>({} as Collection<Album>);
 const relatedArtists = ref<Collection<Artist>>({} as Collection<Artist>);
-onMounted(async () => {
+const fetchArtistData = async () => {
   const id = route.query.id as string;
+  if (!id) return;
   artist.value = await getArtist(id);
   if (artist.value) {
     // artistAlbums.value = await getArtistAlbums(id);
     // relatedArtists.value = await getRelatedArtists(id);
   }
-});
+};
+onMounted(fetchArtistData);
+watch(() => route.query.id, fetchArtistData);
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <template>
   <div class="w-full flex flex-col h-screen min-h-screen">
-    <header class="bg-primary sticky">
+    <header class="bg-black sticky top-0">
       <AppHeader class="container" />
     </header>
     <main class="flex-1">
