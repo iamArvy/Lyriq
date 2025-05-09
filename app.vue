@@ -3,7 +3,7 @@
     <header class="bg-primary sticky">
       <AppHeader class="container" />
     </header>
-    <main class="container flex-1">
+    <main class="flex-1">
       <NuxtPage />
     </main>
     <footer class="bg-primary">

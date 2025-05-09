@@ -95,26 +95,25 @@ export const useSpotify = () => {
     }
   };
 
-  const getRecommendations = async (id: string) => {
+  const getRecommendations = async (id: string): Promise<Collection<Track>> => {
     try {
       const data: TrackRecommendationResponse =
         await makeRequest<TrackRecommendationResponse>("recommendations", {
           method: "GET",
           params: {
             seed_tracks: id,
-            limit: 10,
           },
         });
       return data.tracks;
     } catch (error) {
       console.error("Error getting new albums:", error);
-      return [];
+      return {} as Collection<Track>;
     }
   };
 
   const getArtistAlbums = async (id: string) => {
     try {
-      const data: Collection<Artist> = await makeRequest<Collection<Artist>>(
+      const data: Collection<Album> = await makeRequest<Collection<Album>>(
         "artists/" + id + "/albums",
         {
           method: "GET",
@@ -123,7 +122,7 @@ export const useSpotify = () => {
       return data;
     } catch (error) {
       console.error("Error getting new albums:", error);
-      return {} as Collection<Artist>;
+      return {} as Collection<Album>;
     }
   };
 
@@ -139,7 +138,7 @@ export const useSpotify = () => {
       return data.artists;
     } catch (error) {
       console.error("Error getting new albums:", error);
-      return {} as Artist[];
+      return {} as Collection<Artist>;
     }
   };
 
@@ -169,7 +168,7 @@ export const useSpotify = () => {
 
   const getTrack = async (id: string) => {
     try {
-      const data: Track = await makeRequest<Track>("browse/new-releases", {
+      const data: Track = await makeRequest<Track>("tracks/" + id, {
         method: "GET",
       });
       return data;

@@ -21,6 +21,13 @@ export interface Artist {
   type: string;
   uri: string;
   images: Image[];
+  followers: {
+    total: number;
+  };
+  genre: {
+    genre: string;
+  };
+  popularity: number;
 }
 export interface Track {
   album: {
@@ -73,6 +80,7 @@ export interface Album {
   total_tracks: number;
   type: string;
   uri: string;
+  tracks: Collection<Track>;
 }
 export interface NewReleaseResponse {
   albums: Collection<Album>;

@@ -32,6 +32,9 @@ importers:
       lucide-vue-next:
         specifier: ^0.508.0
         version: 0.508.0(vue@3.5.13(typescript@5.8.3))
+      mp3tag.js:
+        specifier: ^3.11.4
+        version: 3.11.4
       nuxt:
         specifier: ^3.17.2
         version: 3.17.2(@parcel/watcher@2.5.1)(@types/node@22.15.14)(db0@0.3.2)(ioredis@5.6.1)(lightningcss@1.29.2)(magicast@0.3.5)(rollup@4.40.2)(terser@5.39.0)(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.14)(jiti@2.4.2)(lightningcss@1.29.2)(terser@5.39.0)(yaml@2.7.1))(yaml@2.7.1)
@@ -3004,6 +3007,9 @@ packages:
     resolution: {integrity: sha512-kvw3B4G19IXk+BOXnYq/D/VeO9qfHaapMeuS7w7sNUqmGaA6hywdFHMi+VWeR9wUScXM7XjoryTffCZ5B0/8IA==}
     engines: {node: '>=14'}
     hasBin: true
+
+  mp3tag.js@3.11.4:
+    resolution: {integrity: sha512-zocLmiYvJncWkILqPUT4+QGPvGiYSF58QBHp6/BTCiNYTCurWtq0B3jSOt9WMF8LLU+DolW+C7CwIxP+EPM7xA==}
 
   mrmime@2.0.1:
     resolution: {integrity: sha512-Y3wQdFg2Va6etvQ5I82yUhGdsKrcYox6p7FfL1LbK2J4V01F9TGlepTIhnK24t7koZibmg82KGglhA1XK5IsLQ==}
@@ -7750,6 +7756,8 @@ snapshots:
     dependencies:
       ast-module-types: 5.0.0
       node-source-walk: 6.0.2
+
+  mp3tag.js@3.11.4: {}
 
   mrmime@2.0.1: {}
 
